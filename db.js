@@ -9,13 +9,12 @@ class DB {
     }
     this.fenMap.set(fen, {bestMove, score, depth});
   }
-  getFen(fen) {
+  getFen({fen, depth}) {
     const data = this.fenMap.get(fen);
-    if(data) {
-      const {bestMove, score, depth} = data;
-      return {fen, bestMove, score, depth};
+    if(data && (!depth || depth <= data.depth)) {
+      return {fen, bestMove: data.bestMove, score: data.score, depth: data.depth};
     } else {
-      return data;
+      return null;
     }
   }
   toJSON() {

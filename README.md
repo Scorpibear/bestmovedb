@@ -15,7 +15,7 @@ npm install bestmovedb --save
 const Processor = require('bestmovedb');
 const db = new DB();
 db.add({fen, bestMove, score, depth});
-db.getFen(fen);
+db.getFen({fen, depth});
 const json = db.toJSON();
 //...
 const db2 = new DB();
