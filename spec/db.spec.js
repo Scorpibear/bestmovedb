@@ -49,4 +49,9 @@ describe('db', () => {
       expect(db.getFen({fen, depth})).toEqual({fen, depth, bestMove, score});
     });
   });
+  describe('size', () => {
+    it('should be zero at start', () => {
+      expect(db.size).toBe(0);
+    });
+  });
 });

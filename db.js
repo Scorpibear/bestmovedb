@@ -9,6 +9,9 @@ class DB {
     }
     this.fenMap.set(fen, {bestMove, score, depth});
   }
+  get size() {
+    return this.fenMap.size;
+  }
   getFen({fen, depth}) {
     const data = this.fenMap.get(fen);
     if(data && (!depth || depth <= data.depth)) {
