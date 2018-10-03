@@ -3,7 +3,7 @@
 [![Coverage Status](https://codecov.io/gh/Scorpibear/bestmovedb/branch/master/graph/badge.svg)](https://codecov.io/gh/Scorpibear/bestmovedb)
 [![npm version](https://badge.fury.io/js/bestmovedb.svg)](https://www.npmjs.com/package/bestmovedb)
 
-Database of chess best moves
+Database of chess best moves with FEN as a key
 
 ## Install
 ```
@@ -12,7 +12,7 @@ npm install bestmovedb --save
 
 ## Usage
 ```javascript
-const Processor = require('bestmovedb');
+const DB = require('bestmovedb');
 const db = new DB();
 db.add({fen, bestMove, score, depth});
 db.getFen({fen, depth});
