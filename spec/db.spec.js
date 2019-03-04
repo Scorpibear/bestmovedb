@@ -44,9 +44,13 @@ describe('db', () => {
       db.add({fen, depth: 90, bestMove, score});
       expect(db.getFen({fen, depth: 100})).toBeNull();
     });
-    it('return fen if requested depth matches', () => {
+    it('returns fen if requested depth matches', () => {
       db.add({fen, depth, bestMove, score});
       expect(db.getFen({fen, depth})).toEqual({fen, depth, bestMove, score});
+    });
+    it('returns fen if requests depth less than in db', () => {
+      db.add({fen, depth, bestMove, score});
+      expect(db.getFen({fen, depth: depth-2})).toEqual({fen, depth, bestMove, score});
     });
   });
   describe('size', () => {
