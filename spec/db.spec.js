@@ -38,6 +38,12 @@ describe('db', () => {
       db.add({fen, bestMove: 'd4', score: 0.01, depth: 90});
       expect(db.getFen({fen})).toEqual({fen, bestMove, depth, score});
     });
+    it('consider FENs equal if the only difference is unrealistic en passant', () => {
+      const fen = 'rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/5N2/PP2PPPP/RNBQKB1R w KQkq - 0 4';
+      const fen2 = 'rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/5N2/PP2PPPP/RNBQKB1R w KQkq d6 0 4';
+      db.add({fen, bestMove, score, depth});
+      expect(db.getFen({fen2})).toEqual({fen, bestMove, depth, score});
+    });
   });
   describe('getFen', () => {
     it('returns null if requested depth is higher than in db', () => {
