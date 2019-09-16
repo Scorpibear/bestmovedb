@@ -3,7 +3,7 @@
 [![Coverage Status](https://codecov.io/gh/Scorpibear/bestmovedb/branch/master/graph/badge.svg)](https://codecov.io/gh/Scorpibear/bestmovedb)
 [![npm version](https://badge.fury.io/js/bestmovedb.svg)](https://www.npmjs.com/package/bestmovedb)
 
-Database of chess best moves with FEN as a key
+Database of chess best moves with FEN as a key. Stores FENs in normalized state, removing en passant note if en-passant is not allowed.
 
 ## Install
 ```
