@@ -2,7 +2,7 @@ const DB = require('../db');
 
 describe('db', () => {
   const fen = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
-  const fen2 = 'rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1';
+  const fen2 = 'rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1';
   const bestMove = 'e4';
   const score = 0.1;
   const depth = 90;
@@ -37,6 +37,12 @@ describe('db', () => {
       db.add({fen, bestMove, score, depth});
       db.add({fen, bestMove: 'd4', score: 0.01, depth: 90});
       expect(db.getFen({fen})).toEqual({fen, bestMove, depth, score});
+    });
+    it('consider FENs equal if the only difference is unrealistic en passant', () => {
+      const fen = 'rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/5N2/PP2PPPP/RNBQKB1R w KQkq - 0 4';
+      const fen2 = 'rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/5N2/PP2PPPP/RNBQKB1R w KQkq d6 0 4';
+      db.add({fen, bestMove, score, depth});
+      expect(db.getFen({fen: fen2})).toEqual({fen, bestMove, depth, score});
     });
   });
   describe('getFen', () => {
