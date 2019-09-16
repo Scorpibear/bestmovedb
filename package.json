@@ -42,5 +42,8 @@
     "exclude": [
       "spec/**/*.spec.js"
     ]
+  },
+  "dependencies": {
+    "fen-analyzer": "^0.3.1"
   }
 }
