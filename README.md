@@ -15,7 +15,7 @@ npm install bestmovedb --save
 const DB = require('bestmovedb');
 const db = new DB();
 db.add({fen: 'rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 2', bestMove: 'exd5', score: 0.6, depth: 45});
-db.getFen({fen: 'rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 2', depth: 45});
+const fenData = db.getFen({fen: 'rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 2', depth: 45});
 const json = db.toJSON();
 //...
 const db2 = new DB();
